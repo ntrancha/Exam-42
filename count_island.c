@@ -159,13 +159,11 @@ void		count_island(char *str)
 
 int			main(int argc, char **argv)
 {
-	char	c;
 	char	*tmp;
 	char	*str;
 
 	if (argc == 2)
 		count_island(argv[1]);
-	c = '\n';
-	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (0);
 }

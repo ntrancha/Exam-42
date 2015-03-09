@@ -39,11 +39,8 @@ void		inter(char *str, char *str2)
 
 int			main(int argc, char **argv)
 {
-	char	c;
-
-	c = '\n';
 	if (argc == 3)
 		inter(argv[1], argv[2]);
-	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (0);
 }

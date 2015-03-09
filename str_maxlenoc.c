@@ -91,11 +91,8 @@ int			strmaxlone(char **argv, int argc)
 
 int			main(int argc, char **argv)
 {
-	char	c;
-
-	c = '\n';
 	if (argc > 1)
 		strmaxlone(argv, argc);
-	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (0);
 }

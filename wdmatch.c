@@ -27,13 +27,10 @@ int			wdmatch(char *str, char *str2)
 
 int			main(int argc, char **argv)
 {
-	char		c;
-
 	if (argc == 3)
 		if (wdmatch(argv[1], argv[2]))
 			while (*argv[1])
 				write(1, argv[1]++, 1);
-	c = '\n';
-	write(1, &c, 1);
+	write(1, "\n", 1);
 	return (0);
 }
