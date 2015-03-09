@@ -13,7 +13,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <stdio.h>
 
 int			ft_strlen(char *str)
 {
@@ -128,43 +127,32 @@ char		*read_f(char *str)
 	return (all);
 }
 
-void		brute2(char *str, int size, int num, int index)
+void		brute(char *str, int size, int num, int index)
 {
 	if (str[index] && str[index] == 'X')
 	{
 		str[index] = num + 48;
 		if (index > 0)
-			brute2(str, size, num, (index - 1));
-		brute2(str, size, num, (index + 1));
+			brute(str, size, num, (index - 1));
+		brute(str, size, num, (index + 1));
 		if (index > size)
-			brute2(str, size, num, (index - size - 1));
-		brute2(str, size, num, (index + size + 1));
-	}
-}
-
-void		brute(char *str, int size, int num, int index)
-{
-	while (str[index])
-	{
-		if (str[index] == 'X')
-			brute2(str, size, num++, index);
-		index++;
+			brute(str, size, num, (index - size - 1));
+		brute(str, size, num, (index + size + 1));
 	}
 }
 
 void		count_island(char *str)
 {
 	char	*file;
-	int		size;
-	int		start;
+	int		index;
 	int		num;
 
-	start = 0;
+	index = -1;
 	num = 0;
 	file = read_f(str);
-	size = space_len(file);
-	printf("%d\n", size);
-	brute(file, size, num, start);
+	while (file[++index])
+		if (file[index] == 'X')
+			brute(file, space_len(file), num++, index);
 	ft_putstr(file);
 	free(file);
 }
